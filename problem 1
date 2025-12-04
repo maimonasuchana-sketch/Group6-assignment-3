@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+
+    double lamda,sA,sB,sC,m,angelA,angelB,angelC;
+
+    printf("Enter wavelength nm (380-750): ");
+    scanf("%lf",&lamda);
+
+    if(lamda<380 || lamda>750)
+    printf("Diffraction order m:");
+
+    scanf("%lf",&m);
+    printf("Slit A um: ");
+    scanf("%lf",&sA);
+    printf("Slit B um: ");
+    scanf("%lf",&sB);
+    printf("Slit C um: ");
+    scanf("%lf",&sC);
+
+    double L = lamda*1e-9;
+    double aA = sA*1e-6;
+    double aB = sB*1e-6;
+    double aC = sC*1e-6;
+
+    angelA = asin(m*L/aA);
+    angelB = asin(m*L/aB);
+    angelC = asin(m*L/aC);
+
+    printf("\nAngle rad:\n");
+    printf("Slit A = %lf\n",angelA);
+    printf("Slit B = %lf\n",angelB);
+    printf("Slit C = %lf\n",angelC);
+
+    if(angelA>angelB && angelA>angelC)
+        printf("Slit A  most\n");
+    else if(angelB>angelA && angelB>angelC)
+        printf("Slit B  most\n");
+    else if(angelC>angelA && angelC>angelB)
+        printf("Slit C most\n");
+    else
+        printf("Some slits  equally\n");
+
+    return 0;
+}
